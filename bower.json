@@ -1,0 +1,24 @@
+{
+  "name": "casefleet-static-site",
+  "version": "0.0.0",
+  "homepage": "www.casefleet.com",
+  "authors": [
+    "LAWPRCT",
+    "Inc."
+  ],
+  "description": "Landing pages and blog for CaseFleet.com",
+  "moduleType": [
+    "node"
+  ],
+  "license": "none",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "~2.1.4"
+  }
+}
