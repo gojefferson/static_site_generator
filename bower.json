@@ -20,5 +20,8 @@
   ],
   "devDependencies": {
     "jquery": "~2.1.4"
+  },
+  "dependencies": {
+    "fontawesome": "~4.3.0"
   }
 }

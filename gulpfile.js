@@ -55,7 +55,7 @@ gulp.task('compileSass', function() {
 });
 
 gulp.task('minifySass', function () {
-  gulp.src('src/scss/**/*.scss')
+  return gulp.src('src/scss/**/*.scss')
   .pipe(sass.sync().on('error', sass.logError))
   .pipe(sass({outputStyle: 'compressed'}))
   .pipe(gulp.dest('dist/css'));
@@ -75,17 +75,27 @@ gulp.task('copyFiles', function() {
 
 gulp.task("build", ["clean", "compileJade", "copyFiles", "minifySass"]);
 
+gulp.task(
+  "build-watch", 
+  ["clean", "compileJade", "copyFiles", "minifySass"],
+  browserSync.reload
+);
 
 gulp.task('deploy', function() {
   return gulp.src('dist/**/*')
   .pipe(pages(options));
 });
 
+gulp.task('watch', function() {
+  gulp.watch('./src/**/*', ["build"]);
+});
 
 gulp.task('browser', function() {
-    browserSync.init({
-        server: {
-            baseDir: "./dist"
-        }
-    });
+  browserSync.init({
+    server: {
+      baseDir: "./dist"
+    }
+  });
+  gulp.watch('./src/**/*', ["build-watch"]);
+    // gulp.watch('./dist/**/*').on('change', browserSync.reload);
 });
